@@ -13,27 +13,24 @@ public class LoginPage {
     public LoginPage (ChromeDriver driver) {
         this.driver = driver;
     }
+
+    public void openPage () {
+        driver.get("https://lms.code.edu.rs/login/index.php");
+    }
     public WebElement inputUserName () {
-        return driver.findElement(By.xpath("//input[@id='loginusername']"));
+        return driver.findElement(By.xpath("//*[@id='username']"));
 
     }
 
     public WebElement inputPassword () {
-        return driver.findElement(By.xpath("//input[@id='loginpassword']"));
+        return driver.findElement(By.xpath("//*[@id='password']"));
 
     }
 
     public WebElement buttonLogin () {
-        return driver.findElement(By.id("login2"));
+        return driver.findElement(By.id("loginbtn"));
     }
 
-    public WebElement buttonLogin2 () {
-        return driver.findElement(By.xpath("/html/body/div[3]/div/div/div[3]/button[2]"));
-    }
-
-    public void openPage () {
-        driver.get("https://demoblaze.com/index.html");
-    }
     public void setUserName (String userName) {
         inputUserName().sendKeys(userName);
     }
@@ -45,31 +42,10 @@ public class LoginPage {
     public void clickLogin () {
         buttonLogin().click();
     }
-    public void clickLogin2 () {
-        buttonLogin2().click();
-    }
 
+    public String UserText(){
+        return driver.findElement(By.xpath("//*[@id='page']/div[1]/div/div[1]/div/div/div[1]/div/h1[2]")).getText();
 
-
-   public String welcomeText(){
-        return driver.findElement(By.id("nameofuser")).getText();
-
-    }
-
-    public WebElement inputCartLink() {
-        return driver.findElement(By.linkText("Cart"));
-    }
-
-    public WebElement inputHomeLink() {
-        return driver.findElement(By.xpath("//*[@id='navbarExample']/ul/li[1]/a"));
-    }
-
-    public WebElement inputAddToCartLink() {
-        return driver.findElement(By.linkText("Add to cart"));
-    }
-
-    public WebElement inputSGS7Link() {
-        return driver.findElement(By.linkText("Samsung galaxy s7"));
     }
 
     public void sleep(){
